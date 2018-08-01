@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 2
-**Aula**: 3
+**Aula**: 4
 
 ---
 
@@ -26,6 +26,10 @@ php artisan make:model Models\\State -m
 php artisan make:model Models\\City -m
 
 php artisan make:model Models\\Airport -m
+
+php artisan make:model Models\\Flight -m
+
+php artisan make:model Models\\Reserve -m
 
 ```
 
