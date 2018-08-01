@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 2
-**Aula**: 2
+**Aula**: 3
 
 ---
 
@@ -21,14 +21,18 @@ php artisan make:model Models\\Brand -m
 
 php artisan make:model Models\\Plane -m
 
+php artisan make:model Models\\State -m
 
+php artisan make:model Models\\City -m
+
+php artisan make:model Models\\Airport -m
 
 ```
 
 
 ## Anotações
 
-
+```
 Foi incluído no provider AppServiceProvider a linha 
 Schema::defaultStringLength(191);
 
@@ -42,3 +46,4 @@ Foram incluídas as linhas abaixo na configuração do MySQL
                 'NO_ENGINE_SUBSTITUTION',
             ],
 
+```
