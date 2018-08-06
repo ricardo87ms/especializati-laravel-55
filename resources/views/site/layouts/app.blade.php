@@ -42,7 +42,7 @@
                             <a class="nav-link" href="?pg=home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?pg=promocoes">Promoções</a>
+                            <a class="nav-link" href="{{ route('promotions') }}">Promoções</a>
                         </li>
                     </ul>
                 </div><!--collapse-->
