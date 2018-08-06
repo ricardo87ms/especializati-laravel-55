@@ -68,15 +68,9 @@
 	</div><!--Top Dashboard-->
 
 	<div class="content-ds">
-		
-		<div class="bred">
-			<a href="" class="bred">Home  ></a> <a href="" class="bred">Dashboard</a>
-		</div>
-
-		
+			
 		@yield('content')
 		
-
 	</div><!--End Content DS-->
 
 </section><!--End Content-->
