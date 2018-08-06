@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 2
-**Aula**: 7
+**Aula**: 8
 
 ---
 
@@ -32,6 +32,8 @@ php artisan make:model Models\\Flight -m
 php artisan make:model Models\\Reserve -m
 
 php artisan make:controller Panel\\PanelController
+
+php artisan make:controller Site\\SiteController
 
 ```
 

@@ -1,4 +1,4 @@
-@extends('panel.layout.app')
+@extends('panel.layouts.app')
 
 @section('content')
 
