@@ -8,8 +8,8 @@
 ### Andamento das Aulas
 
 **Feito**
-**Modulo**: 2
-**Aula**: 9
+**Modulo**: 3
+**Aula**: 1
 
 ---
 
@@ -36,6 +36,8 @@ php artisan make:controller Panel\\PanelController
 php artisan make:controller Site\\SiteController
 
 php artisan make:auth
+
+php artisan make:controller Panel\\BrandController --resource
 
 ```
 

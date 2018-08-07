@@ -27,25 +27,19 @@
 	<div class="list-menu">
 		<ul class="menu-list">
 			<li>
-				<a href="?pag=home">
+				<a href="{{route('panel')}}">
 					<i class="fa fa-home" aria-hidden="true"></i>
 					Home
 				</a>
 			</li>
 
 			<li>
-				<a href="?pag=list">
-					<i class="fa fa-id-card" aria-hidden="true"></i>
-					Listagem
+				<a href="{{ route('brands.index') }}">
+					<i class="fa fa-university" aria-hidden="true"></i>
+					Marcas
 				</a>
 			</li>
 
-			<li>
-				<a href="?pag=forms">
-					<i class="fa fa-fort-awesome" aria-hidden="true"></i>
-					Forms
-				</a>
-			</li>
 		</ul>
 	</div>
 
