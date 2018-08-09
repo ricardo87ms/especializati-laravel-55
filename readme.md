@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 3
-**Aula**: 2
+**Aula**: 3
 
 ---
 
@@ -38,6 +38,10 @@ php artisan make:controller Site\\SiteController
 php artisan make:auth
 
 php artisan make:controller Panel\\BrandController --resource
+
+php artisan make:seeder StatesTableSeeder
+
+php artisan make:seeder CitiesTableSeeder
 
 ```
 

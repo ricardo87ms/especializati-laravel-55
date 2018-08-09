@@ -13,11 +13,13 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Brand $brand)
     {
         $title = 'Marcas de Aviões';
 
-        return view('panel.brands.index', compact('title'));
+        $brands = $brand->all();
+
+        return view('panel.brands.index', compact('title', 'brands'));
     }
 
     /**
@@ -38,10 +40,15 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Brand $brand)
     {
         $dataForm = $request->all();
-        dd(Brand::create($request->all()));
+        $insert = $brand->create($request->all());
+        if($insert){
+            return redirect()->route('brands.index');
+        } else {
+            return redirect()->back()->with('error', 'Não foi possível Cadastrar');
+        }
     }
 
     /**
