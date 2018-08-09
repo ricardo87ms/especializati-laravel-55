@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Panel;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 
 class BrandController extends Controller
 {
@@ -14,7 +15,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return 'index brand';
+        $title = 'Marcas de Aviões';
+
+        return view('panel.brands.index', compact('title'));
     }
 
     /**
@@ -24,7 +27,9 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Cadastrar Novo Avião';
+
+        return view('panel.brands.create', compact('title'));
     }
 
     /**
@@ -35,7 +40,8 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataForm = $request->all();
+        dd(Brand::create($request->all()));
     }
 
     /**
