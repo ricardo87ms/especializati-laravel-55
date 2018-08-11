@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 3
-**Aula**: 7
+**Aula**: 8
 
 ---
 
@@ -44,6 +44,8 @@ php artisan make:seeder StatesTableSeeder
 php artisan make:seeder CitiesTableSeeder
 
 php artisan make:request BrandStoreUpdateFormRequest
+
+composer require "laravelcollective/html":"^5.4.0"
 
 ```
 

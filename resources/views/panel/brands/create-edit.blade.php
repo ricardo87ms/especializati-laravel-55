@@ -3,13 +3,13 @@
 @section('content')
 <div class="bred">
     <a href="{{ route('panel') }}" class="bred">Home  ></a> 
-    <a href="{{ route('brands.index') }}" class="bred">Brands</a>
-    <a href="{{ route('brands.edit', $brand->id) }}" class="bred">Editar</a>
+    <a href="{{ route('brands.index') }}" class="bred">Brands ></a>
+    <a href="" class="bred">Gestão</a>
 
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Editar Marca: {{ $brand->name }}</h1>
+    <h1 class="title-pg">Gestão de Marcas de Aviões</h1>
 </div>  
 
 <div class="content-din">
@@ -25,16 +25,19 @@
 </div>
 
 <div class="content-din">
-
+    @if (isset($brand))
     <form class="form form-search form-ds" action="{{ route('brands.update', $brand->id) }}" method="POST">
+        {!! method_field('PUT') !!}    
+    @else
+    <form class="form form-search form-ds" action="{{ route('brands.store') }}" method="POST">
+    @endif
         
-        {!! csrf_field() !!}
-        
-
-        {{-- <input type="hidden" name="id" value="{{ $brand->id }}"> --}}
+        {{ csrf_field() }}
 
         <div class="form-group">
-            <input type="text" name="name" value="{{ $brand->name }}" placeholder="Nome:" class="form-control">
+            <input type="text" name="name"  
+                    placeholder="Nome:" class="form-control" 
+                    value="{{ old('name', isset($brand->name) ? $brand->name : '') }}">
         </div>
         
 
