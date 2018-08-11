@@ -26,25 +26,20 @@
 
 <div class="content-din">
     @if (isset($brand))
-    <form class="form form-search form-ds" action="{{ route('brands.update', $brand->id) }}" method="POST">
-        {!! method_field('PUT') !!}    
+    {{-- <form class="form form-search form-ds" action="{{ route('brands.update', $brand->id) }}" method="POST"> --}}
+    {!! Form::model($brand, ['route' => ['brands.update', $brand->id], 'class'=> 'form form-search form-ds', 'method' => 'PUT']) !!}
     @else
-    <form class="form form-search form-ds" action="{{ route('brands.store') }}" method="POST">
+    {{-- <form class="form form-search form-ds" action="{{ route('brands.store') }}" method="POST"> --}}
+    {!! Form::open(['url' => route('brands.store')]) !!}
     @endif
-        
-        {{ csrf_field() }}
-
         <div class="form-group">
-            <input type="text" name="name"  
-                    placeholder="Nome:" class="form-control" 
-                    value="{{ old('name', isset($brand->name) ? $brand->name : '') }}">
+            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nome:']) !!}
         </div>
         
-
         <div class="form-group">
             <button class="btn btn-search">Enviar </button>
         </div>
-    </form>
+    {!! Form::close() !!}
 
 </div><!--Content Dinâmico-->
 

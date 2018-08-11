@@ -34,7 +34,7 @@
         {{-- <input type="hidden" name="id" value="{{ $brand->id }}"> --}}
 
         <div class="form-group">
-            <input type="text" name="name" value="{{ $brand->name }}" placeholder="Nome:" class="form-control">
+            <input type="text" name="name" value="{{ old('name', $brand->name) }}" placeholder="Nome:" class="form-control">
         </div>
         
 
