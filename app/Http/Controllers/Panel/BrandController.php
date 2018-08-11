@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Http\Requests\BrandStoreUpdateFormRequest;
 
 class BrandController extends Controller
 {
@@ -46,7 +47,7 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BrandStoreUpdateFormRequest $request)
     {
         $dataForm = $request->all();
         $insert = $this->brand->create($request->all());
@@ -97,7 +98,7 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BrandStoreUpdateFormRequest $request, $id)
     {
         $brand = $this->brand->find($id);
         

@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 3
-**Aula**: 5
+**Aula**: 7
 
 ---
 
@@ -42,6 +42,8 @@ php artisan make:controller Panel\\BrandController --resource
 php artisan make:seeder StatesTableSeeder
 
 php artisan make:seeder CitiesTableSeeder
+
+php artisan make:request BrandStoreUpdateFormRequest
 
 ```
 

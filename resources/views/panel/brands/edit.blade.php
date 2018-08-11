@@ -13,11 +13,25 @@
 </div>  
 
 <div class="content-din">
+    @if (isset($errors) && $errors->any())
+        <div class="alert alert-warning">
+            <ul>
+                @foreach ($errors->all() as $errors)
+                <li>{{$errors}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
+
+<div class="content-din">
 
     <form class="form form-search form-ds" action="{{ route('brands.update', $brand->id) }}" method="POST">
         
         {!! csrf_field() !!}
         {!! method_field('PUT') !!}
+
+        {{-- <input type="hidden" name="id" value="{{ $brand->id }}"> --}}
 
         <div class="form-group">
             <input type="text" name="name" value="{{ $brand->name }}" placeholder="Nome:" class="form-control">
