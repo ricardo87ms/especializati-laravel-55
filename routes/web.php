@@ -5,7 +5,7 @@ $this->namespace('Panel')
      ->prefix('panel')
      ->group(function(){
     
-    $this->post('brands/search', 'BrandController@search')->name('brands.search');
+    $this->any('brands/search', 'BrandController@search')->name('brands.search');
     $this->resource('brands', 'BrandController');
     $this->get('/', 'PanelController@index')->name('panel');
 
