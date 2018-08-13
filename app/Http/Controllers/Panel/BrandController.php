@@ -130,4 +130,15 @@ class BrandController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $brands = $this->brand->search($request->key_search, $this->totalPage);
+
+        //$brands = $this->brand->where('name', 'LIKE', "%$request->key_search%")->paginate($this->totalPage);
+        
+        $title = 'Pesquisa por ' . $request->key_search;
+
+        return view('panel.brands.index', compact('title', 'brands'));
+    }
 }
