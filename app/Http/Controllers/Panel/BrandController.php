@@ -10,6 +10,7 @@ use App\Http\Requests\BrandStoreUpdateFormRequest;
 class BrandController extends Controller
 {
     private $brand;
+    private $totalPage = 4;
 
     public function __construct(Brand $brand)
     {
@@ -24,7 +25,7 @@ class BrandController extends Controller
     {
         $title = 'Marcas de Aviões';
 
-        $brands = $this->brand->all();
+        $brands = $this->brand->paginate($this->totalPage);
 
         return view('panel.brands.index', compact('title', 'brands'));
     }
