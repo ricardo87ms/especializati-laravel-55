@@ -12,17 +12,7 @@
     <h1 class="title-pg">Gestão de Marcas de Aviões</h1>
 </div>  
 
-<div class="content-din">
-    @if (isset($errors) && $errors->any())
-        <div class="alert alert-warning">
-            <ul>
-                @foreach ($errors->all() as $errors)
-                <li>{{$errors}}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-</div>
+@include('panel.includes.errors')
 
 <div class="content-din">
     @if (isset($brand))

@@ -12,13 +12,7 @@
     <h1 class="title-pg">{{$brand->name}}</h1>
 </div>  
 
-<div class="messages">
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-</div>
+@include('panel.includes.alerts')
 
 <div class="content-din">
 

@@ -18,20 +18,19 @@
             {!! Form::text('key_search', null, ['class' => 'form-control', 'placeholder' => 'O que deseja pesquisar?']) !!}
             <button class="btn btn-search">Pesquisar</button>
         {!! Form::close() !!}
+
+        @if (isset($dataForm['key_search']))
+            <div class="alert alert-info">
+                <p>
+                    <a href="{{ route('brands.index') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                    Resultados para: <strong>{{ $dataForm['key_search'] }}</strong>
+                </p>
+            </div>
+        @endif
+
     </div>
 
-    <div class="messages">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-    </div>
+    @include('panel.includes.alerts')
 
     <div class="class-btn-insert">
         <a href="{{ route('brands.create') }}" class="btn-insert">
