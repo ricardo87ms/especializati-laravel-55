@@ -7,6 +7,7 @@ $this->namespace('Panel')
     
     $this->any('brands/search', 'BrandController@search')->name('brands.search');
     $this->resource('brands', 'BrandController');
+    $this->resource('planes', 'PlaneController');
     $this->get('/', 'PanelController@index')->name('panel');
 
 });
