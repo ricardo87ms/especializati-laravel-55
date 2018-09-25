@@ -166,4 +166,19 @@ class BrandController extends Controller
 
         return view('panel.brands.index', compact('title', 'brands', 'dataForm'));
     }
+
+    public function planes($id)
+    {
+        $brand = $this->brand->find($id);
+        
+        if(!$brand){
+            return redirect()->back();
+        }
+
+        $planes = $brand->planes()->get();
+
+        $title = "Aviões da Marca {$brand->name}";
+
+        return view('panel.brands.planes', compact('brand', 'title', 'planes'));
+    }
 }
