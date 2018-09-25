@@ -13,6 +13,8 @@ $this->namespace('Panel')
     $this->any('planes/search', 'PlaneController@search')->name('planes.search');
     $this->resource('planes', 'PlaneController');
 
+    $this->any('states/search', 'StateController@search')->name('states.search');
+    $this->get('states', 'StateController@index')->name('states.index');
 
     $this->get('/', 'PanelController@index')->name('panel');
 

@@ -8,8 +8,8 @@
 ### Andamento das Aulas
 
 **Feito**
-**Modulo**: 4
-**Aula**: 08
+**Modulo**: 5
+**Aula**: 01
 
 ---
 
@@ -48,6 +48,8 @@ php artisan make:request BrandStoreUpdateFormRequest
 composer require "laravelcollective/html":"^5.4.0"
 
 php artisan make:request PlaneStoreUpdateFormRequest
+
+php artisan make:controller Panel\\StateController
 
 ```
 
