@@ -23,4 +23,17 @@ class StateController extends Controller
 
         return view('panel.states.index', compact('states', 'title'));
     }
+
+    public function search(Request $request)
+    {
+        $dataForm = $request->all();
+
+        $keySearch = $request->key_search;
+
+        $states = $this->state->search($keySearch);
+
+        $title = "Resultados de Estados: {$keySearch}";
+
+        return view('panel.states.index', compact('dataForm', 'states', 'title'));
+    }
 }
