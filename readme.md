@@ -8,8 +8,8 @@
 ### Andamento das Aulas
 
 **Feito**
-**Modulo**: 5
-**Aula**: 06
+**Modulo**: 6
+**Aula**: 01
 
 ---
 
@@ -50,6 +50,8 @@ composer require "laravelcollective/html":"^5.4.0"
 php artisan make:request PlaneStoreUpdateFormRequest
 
 php artisan make:controller Panel\\StateController
+
+php artisan make:controller Panel\\FlightController --resource
 
 ```
 
