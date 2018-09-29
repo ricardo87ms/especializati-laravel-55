@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Panel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Flight;
+use App\Models\Plane;
+use App\Models\Airport;
 
 class FlightController extends Controller
 {
@@ -37,7 +39,12 @@ class FlightController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Cadastrar Voos';
+
+        $planes = Plane::pluck('id', 'id');
+        $airports = Airport::pluck('name', 'id');
+
+        return view('panel.flights.create', compact('title', 'planes', 'airports'));
     }
 
     /**
