@@ -16,6 +16,9 @@ $this->namespace('Panel')
     $this->any('states/search', 'StateController@search')->name('states.search');
     $this->get('states', 'StateController@index')->name('states.index');
 
+    $this->any('state/{initials}/cities/search', 'CityController@search')->name('state.cities.search');
+    $this->get('state/{initials}/cities', 'CityController@index')->name('state.cities');
+
     $this->get('/', 'PanelController@index')->name('panel');
 
 });
