@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Airport;
 
 class Flight extends Model
 {
@@ -23,6 +24,11 @@ class Flight extends Model
         'description',
     ];
 
+    public function getItems()
+    {
+        return $this->with(['origin', 'destination'])->paginate($this->totalPage);
+    }
+
     public function newFlight($request)
     {
         /*
@@ -33,5 +39,27 @@ class Flight extends Model
         */
         $data = $request->all();
         return $this->create($data);
+    }
+
+    public function updateFlight($request)
+    {
+        /*
+        $data = $request->all();
+        $data['airport_origin_id'] = $request->origin;
+        $data['airport_destination_id'] = $request->destination;
+        //dd($data);
+        */
+        $data = $request->all();
+        return $this->update($data);
+    }
+
+    public function origin()
+    {
+        return $this->belongsTo(Airport::class, 'airport_origin_id');
+    }
+
+    public function destination()
+    {
+        return $this->belongsTo(Airport::class, 'airport_destination_id');
     }
 }

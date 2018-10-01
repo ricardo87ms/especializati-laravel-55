@@ -27,7 +27,7 @@ class FlightController extends Controller
     {
         $title = "Listagem de Voos";
 
-        $flights = $this->flight->paginate($this->totalPage);
+        $flights = $this->flight->getItems();
 
         return view('panel.flights.index', compact('title', 'flights'));
     }
@@ -74,7 +74,13 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        //
+        $flight = $this->flight->with(['origin', 'destination'])->find($id);
+        if(!$flight)
+            return redirect()->back();
+
+        $title = "Detalhes do voo {$flight->id}";
+
+        return view('panel.flights.show', compact('flight', 'title'));
     }
 
     /**
@@ -85,7 +91,16 @@ class FlightController extends Controller
      */
     public function edit($id)
     {
-        //
+        $flight = $this->flight->find($id);
+        if(!$flight)
+            return redirect()->back();
+        
+        $title = "Editar Voo {$flight->id}";
+
+        $planes = Plane::pluck('id', 'id');
+        $airports = Airport::pluck('name', 'id');
+
+        return view('panel.flights.edit', compact('title', 'flight', 'planes', 'airports'));
     }
 
     /**
@@ -97,7 +112,19 @@ class FlightController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $flight = $this->flight->find($id);
+        if(!$flight)
+            return redirect()->back();
+
+        if ( $flight->updateFlight($request) )
+            return redirect()
+                            ->route('flights.index')
+                            ->with('success', 'Sucesso ao atualizar');
+            else
+                return redirect()
+                            ->back()
+                            ->with('error', 'Falha ao atualizar')
+                            ->withInput();
     }
 
     /**
@@ -108,6 +135,10 @@ class FlightController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->flight->find($id)->delete();
+
+        return redirect()
+                    ->route('flights.index')
+                    ->with('success', 'Sucesso ao deletar');
     }
 }
