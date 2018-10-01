@@ -16,7 +16,7 @@
 
 <div class="content-din">
 
-    {!! Form::open(['url' => route('flights.store')]) !!}
+    {!! Form::open(['route' => 'flights.store', 'class' => 'form form-search form-ds', 'files' => true]) !!}
 
         @include('panel.flights.form')
         
