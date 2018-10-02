@@ -43,6 +43,7 @@
     <table class="table table-striped">
         <tr>
             <th>#</th>
+            <th>Imagem</th>
             <th>Origem</th>
             <th>Destino</th>
             <th>Paradas</th>
@@ -53,6 +54,14 @@
 
         @forelse ($flights as $flight)
             <tr>
+                <td>{{$flight->id}}</td>
+                <td>
+                    @if ($flight->image)
+                    <img src=" {{ url("storage/flights/{$flight->image}") }} " alt="{{$flight->id}}" srcset="" style="max-width: 60px;">
+                    @else
+                    <img src=" {{ url("assets/panel/imgs/no-image.png") }} " alt="{{$flight->id}}" srcset="" style="max-width: 100px;">
+                    @endif
+                </td>
                 <td>{{$flight->id}}</td>
                 <td>{{$flight->origin->name}}</td>
                 <td>{{$flight->destination->name}}</td>

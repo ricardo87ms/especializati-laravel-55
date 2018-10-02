@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 6
-**Aula**: 09
+**Aula**: 11
 
 ---
 
@@ -54,6 +54,8 @@ php artisan make:controller Panel\\StateController
 php artisan make:controller Panel\\FlightController --resource
 
 composer dump-autoload
+
+php artisan storage:link
 
 ```
 
