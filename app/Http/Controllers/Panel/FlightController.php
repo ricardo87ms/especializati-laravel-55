@@ -56,30 +56,30 @@ class FlightController extends Controller
     public function store(Request $request)
     {
         $nameFile = '';
-        if($request->hasFile('image') && $request->file('image')->isValid()){
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
             // $extension = $request->image->extension();
             // $nameFile = uniqid(date('HisYmd'));
             // $newNameFile = "{$nameFile}.{$extension}";
             $nameFile = uniqid(date('HisYmd')) . '.' . $request->image->extension();
 
-            if(!$request->image->storeAs('flights', $nameFile)){
+            if (!$request->image->storeAs('flights', $nameFile)) {
                 return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao carregar arquivo')
-                            ->withInput();
+                    ->back()
+                    ->with('error', 'Falha ao carregar arquivo')
+                    ->withInput();
             }
         }
 
-        if($this->flight->newFlight($request, $nameFile))
+        if ($this->flight->newFlight($request, $nameFile))
             return redirect()
-                            ->route('flights.index')
-                            ->with('success', 'Sucesso ao cadastrar');
-            else
-                return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao cadastrar')
-                            ->withInput();
+            ->route('flights.index')
+            ->with('success', 'Sucesso ao cadastrar');
+        else
+            return redirect()
+            ->back()
+            ->with('error', 'Falha ao cadastrar')
+            ->withInput();
     }
 
     /**
@@ -91,7 +91,7 @@ class FlightController extends Controller
     public function show($id)
     {
         $flight = $this->flight->with(['origin', 'destination'])->find($id);
-        if(!$flight)
+        if (!$flight)
             return redirect()->back();
 
         $title = "Detalhes do voo {$flight->id}";
@@ -108,9 +108,9 @@ class FlightController extends Controller
     public function edit($id)
     {
         $flight = $this->flight->find($id);
-        if(!$flight)
+        if (!$flight)
             return redirect()->back();
-        
+
         $title = "Editar Voo {$flight->id}";
 
         $planes = Plane::pluck('id', 'id');
@@ -129,18 +129,36 @@ class FlightController extends Controller
     public function update(Request $request, $id)
     {
         $flight = $this->flight->find($id);
-        if(!$flight)
+        if (!$flight)
             return redirect()->back();
 
-        if ( $flight->updateFlight($request) )
-            return redirect()
-                            ->route('flights.index')
-                            ->with('success', 'Sucesso ao atualizar');
-            else
+        $nameFile = '';
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            
+            if($flight->image){
+                $nameFile = $flight->image;
+            } else {
+                $nameFile = uniqid(date('HisYmd')) . '.' . $request->image->extension();
+            }
+            
+
+            if (!$request->image->storeAs('flights', $nameFile)) {
                 return redirect()
-                            ->back()
-                            ->with('error', 'Falha ao atualizar')
-                            ->withInput();
+                    ->back()
+                    ->with('error', 'Falha ao carregar arquivo')
+                    ->withInput();
+            }
+        }
+
+        if ($flight->updateFlight($request, $nameFile))
+            return redirect()
+            ->route('flights.index')
+            ->with('success', 'Sucesso ao atualizar');
+        else
+            return redirect()
+            ->back()
+            ->with('error', 'Falha ao atualizar')
+            ->withInput();
     }
 
     /**
@@ -154,7 +172,7 @@ class FlightController extends Controller
         $this->flight->find($id)->delete();
 
         return redirect()
-                    ->route('flights.index')
-                    ->with('success', 'Sucesso ao deletar');
+            ->route('flights.index')
+            ->with('success', 'Sucesso ao deletar');
     }
 }
