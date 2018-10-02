@@ -55,6 +55,15 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $extension = $request->image->extension();
+            $nameFile = uniqid(date('HisYmd'));
+            $newNameFile = "{$nameFile}.{$extension}";
+
+            $request->image->storeAs('flights', $newNameFile);
+        }
+
         if($this->flight->newFlight($request))
             return redirect()
                             ->route('flights.index')
