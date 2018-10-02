@@ -30,7 +30,7 @@ class Flight extends Model
         return $this->with(['origin', 'destination'])->paginate($this->totalPage);
     }
 
-    public function newFlight($request)
+    public function newFlight($request, $nameFile = '')
     {
         /*
         $data = $request->all();
@@ -39,10 +39,11 @@ class Flight extends Model
         //dd($data);
         */
         $data = $request->all();
+        $data['image'] = $nameFile;
         return $this->create($data);
     }
 
-    public function updateFlight($request)
+    public function updateFlight($request, $nameFile = '')
     {
         /*
         $data = $request->all();
@@ -51,6 +52,7 @@ class Flight extends Model
         //dd($data);
         */
         $data = $request->all();
+        $data['image'] = $nameFile;
         return $this->update($data);
     }
 
