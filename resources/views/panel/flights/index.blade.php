@@ -20,6 +20,10 @@
             {!! Form::date('date', null, ['class' => 'form-control']) !!}
             {!! Form::time('hour_output', null, ['class' => 'form-control']) !!}
             {!! Form::number('total_stops', null, ['class' => 'form-control', 'placeholder' => 'Total Paradas']) !!}
+
+            {!! Form::select('origin', $airports, null, ['class' => 'form-control']) !!}
+            {!! Form::select('destination', $airports, null, ['class' => 'form-control']) !!}
+
             <button class="btn btn-search">Pesquisar</button>
         {!! Form::close() !!}
 
