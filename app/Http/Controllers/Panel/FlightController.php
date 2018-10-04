@@ -175,4 +175,17 @@ class FlightController extends Controller
             ->route('flights.index')
             ->with('success', 'Sucesso ao deletar');
     }
+
+    public function search(Request $request)
+    {
+        $flights = $this->flight->search($request, $this->totalPage);
+
+        $dataForm = $request->except('_token');
+
+        $title = 'Resultados dos voos pesquisado';
+
+        $airports = Airport::pluck('name', 'id');
+
+        return view('panel.flights.index', compact('title', 'flights', 'dataForm', 'airports'));
+    }
 }

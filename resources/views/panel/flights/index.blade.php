@@ -15,19 +15,37 @@
 
     <div class="form-search">
 
-        {{-- {!! Form::open(['route' => 'brands.search', 'class' => 'form form-inline']) !!}
-            {!! Form::text('key_search', null, ['class' => 'form-control', 'placeholder' => 'O que deseja pesquisar?']) !!}
+        {!! Form::open(['route' => 'flights.search', 'class' => 'form form-inline']) !!}
+            {!! Form::number('code', null, ['class' => 'form-control', 'placeholder' => 'Código']) !!}
+            {!! Form::date('date', null, ['class' => 'form-control']) !!}
+            {!! Form::time('hour_output', null, ['class' => 'form-control']) !!}
+            {!! Form::number('total_stops', null, ['class' => 'form-control', 'placeholder' => 'Total Paradas']) !!}
             <button class="btn btn-search">Pesquisar</button>
         {!! Form::close() !!}
 
-        @if (isset($dataForm['key_search']))
+        @if (isset($dataForm))
             <div class="alert alert-info">
                 <p>
-                    <a href="{{ route('brands.index') }}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                    Resultados para: <strong>{{ $dataForm['key_search'] }}</strong>
+                    <a href="{{route('flights.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+
+                    @if( isset($dataForm['code']) )
+                        <p>Código: <strong>{{$dataForm['code']}}</strong></p>
+                    @endif
+                    
+                    @if( isset($dataForm['date']) )
+                        <p>Data: <strong>{{formatDateAndTime($dataForm['date'])}}</strong></p>
+                    @endif
+                    
+                    @if( isset($dataForm['hour_output']) )
+                        <p>Hora de Saída: <strong>{{$dataForm['hour_output']}}</strong></p>
+                    @endif
+
+                    @if( isset($dataForm['total_stops']) )
+                        <p>Total de Paradas: <strong>{{$dataForm['total_stops']}}</strong></p>
+                    @endif
                 </p>
             </div>
-        @endif --}}
+        @endif
 
     </div>
 

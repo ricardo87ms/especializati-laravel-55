@@ -71,4 +71,29 @@ class Flight extends Model
     // {
     //     return Carbon::parse($value)->format('d/m/Y');
     // }
+
+    public function search($request, $totalPage)
+    {
+        $flights = $this->where(function($query) use($request) {
+            if ($request->code)
+                $query->where('id', $request->code);
+            
+            if ($request->date)
+                $query->where('date', '>=', $request->date);
+            
+            if ($request->hour_output)
+                $query->where('hour_output', $request->hour_output);
+
+            if ($request->total_stops)
+                $query->where('total_stops', $request->total_stops);
+
+            if ($request->origin)
+                $query->where('airport_origin_id', $request->origin);
+
+            if ($request->destionation)
+                $query->where('airport_destination_id', $request->destionation);
+        })->paginate($totalPage);
+
+        return $flights;
+    }
 }
