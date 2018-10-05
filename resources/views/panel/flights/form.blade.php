@@ -39,7 +39,7 @@
     {!! Form::number('total_plots', null, ['class' => 'form-control', 'placeholder' => 'Total de Parelas']) !!}
 </div>
 <div class="form-group">
-    {!! Form::checkbox('is_promotion', null, null, ['id' => 'is_promotion']) !!}
+    {!! Form::checkbox('is_promotion', true, null, ['id' => 'is_promotion']) !!}
     <label for="price">É promoção?</label>
 </div>
 <div class="form-group">
