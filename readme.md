@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 6
-**Aula**: 14
+**Aula**: 15
 
 ---
 
@@ -56,6 +56,8 @@ php artisan make:controller Panel\\FlightController --resource
 composer dump-autoload
 
 php artisan storage:link
+
+php artisan make:request StoreUpdateFlightFormRequest
 
 ```
 
