@@ -22,6 +22,9 @@ $this->namespace('Panel')
     $this->any('flights/search', 'FlightController@search')->name('flights.search');
     $this->resource('flights', 'FlightController');
 
+    $this->any('city/{id}/airports/search', 'AirportController@search')->name('aiports.search');
+    $this->resource('city/{id}/airports', 'AirportController');
+
     $this->get('/', 'PanelController@index')->name('panel');
 
 });

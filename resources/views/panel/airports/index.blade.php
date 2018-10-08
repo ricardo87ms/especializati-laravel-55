@@ -4,20 +4,18 @@
 
 <div class="bred">
     <a href="{{route('panel')}}" class="bred">Home  ></a>
-    <a href="{{route('states.index')}}" class="bred">Estados > </a>
-    <a href="{{route('state.cities', $state->initials)}}" class="bred">{{$state->name}} > </a>
-    <a href="" class="bred">Cidades</a>
+    <a href="{{route('airports.index', $city->id)}}" class="bred">Airports</a>
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Cidades do Estado ({{$cities->count()}} - {{$cities->total()}}): <strong>{{$state->name}}</strong></h1>
+    <h1 class="title-pg">Aeroportos da cidade: {{$city->name}}</h1>
 </div>
 
 
 <div class="content-din bg-white">
 
     <div class="form-search">
-        {!! Form::open(['route' => ['state.cities.search', $state->initials], 'class' => 'form form-inline']) !!}
+        {!! Form::open(['route' => ['aiports.search', $city->id], 'class' => 'form form-inline']) !!}
             {!! Form::text('key_search', null, ['class' => 'form-control', 'placeholder' => 'O que deseja encontrar?']) !!}
 
             <button class="btn btn-search">Pesquisar</button>
@@ -36,21 +34,28 @@
     <div class="messages">
         @include('panel.includes.alerts')
     </div>
+
+    <div class="class-btn-insert">
+        <a href="{{route('airports.create', $city->id)}}" class="btn-insert">
+            <span class="glyphicon glyphicon-plus"></span>
+            Cadastrar
+        </a>
+    </div>
     
     <table class="table table-striped">
         <tr>
             <th>Nome</th>
+            <th>Endereço</th>
             <th width="200">Ações</th>
         </tr>
 
-        @forelse($cities as $city)
+        @forelse($airports as $airport)
             <tr>
-                <td>{{$city->name}}</td>
+                <td>{{$airport->name}}</td>
+                <td>{{$airport->address}}</td>
                 <td>
-                    <a href="{{route('airports.index', $city->id)}}" class="edit">
-                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-                        Aeroportos
-                    </a>
+                    <a href="{{route('airports.edit', [$city->id, $airport->id])}}" class="edit">Edit</a>
+                    <a href="{{route('airports.show', [$city->id, $airport->id])}}" class="delete">View</a>
                 </td>
             </tr>
         @empty
@@ -61,9 +66,9 @@
     </table>
 
     @if(isset($dataForm))
-        {!! $cities->appends($dataForm)->links() !!}
+        {!! $airports->appends($dataForm)->links() !!}
     @else
-        {!! $cities->links() !!}
+        {!! $airports->links() !!}
     @endif
 
 </div><!--Content Dinâmico-->
