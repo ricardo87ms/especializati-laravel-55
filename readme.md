@@ -59,6 +59,8 @@ php artisan storage:link
 
 php artisan make:request StoreUpdateFlightFormRequest
 
+php artisan make:request UpdateStoreAirportFormRequest
+
 ```
 
 
