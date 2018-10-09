@@ -61,6 +61,10 @@ php artisan make:request StoreUpdateFlightFormRequest
 
 php artisan make:request UpdateStoreAirportFormRequest
 
+php artisan make:controller Panel\\UserController --resource
+
+php artisan make:request StoreUpdateUserFormRequest
+
 ```
 
 

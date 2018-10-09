@@ -61,6 +61,13 @@
 				</a>
 			</li>
 
+			<li>
+				<a href="{{ route('users.index') }}">
+					<i class="fa fa-users" aria-hidden="true"></i>
+					Usuários
+				</a>
+			</li>
+
 		</ul>
 	</div>
 
