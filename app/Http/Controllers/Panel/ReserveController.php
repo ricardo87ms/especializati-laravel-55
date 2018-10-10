@@ -115,4 +115,15 @@ class ReserveController extends Controller
                     ->with('error', 'Falha ao atualizar o status!');
     }
 
+    public function search(Request $request)
+    {
+        $reserves = $this->reserve->search($request, $this->totalPage);
+
+        $title = "Resultados para a pesquisa";
+
+        $dataForm = $request->except('_token');
+
+        return view('panel.reserves.search', compact('reserves', 'title', 'dataForm'));
+    }
+
 }

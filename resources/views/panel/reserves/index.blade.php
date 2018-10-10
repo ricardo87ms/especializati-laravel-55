@@ -15,10 +15,7 @@
 
     <div class="form-search">
 
-        {!! Form::open(['route' => 'planes.search', 'class' => 'form form-inline']) !!}
-            {!! Form::text('key_search', null, ['class' => 'form-control', 'placeholder' => 'O que deseja pesquisar?']) !!}
-            <button class="btn btn-search">Pesquisar</button>
-        {!! Form::close() !!}
+        @include('panel.reserves.form-search')
 
         @if (isset($dataForm['key_search']))
             <div class="alert alert-info">
