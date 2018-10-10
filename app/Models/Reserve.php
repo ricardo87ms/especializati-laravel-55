@@ -34,4 +34,11 @@ class Reserve extends Model
 
         return $statusAvailable;
     }
+
+    public function changeStatus($newStatus)
+    {
+        $this->status = $newStatus;
+
+        return $this->save();
+    }
 }
