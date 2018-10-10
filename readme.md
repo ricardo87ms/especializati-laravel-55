@@ -65,6 +65,8 @@ php artisan make:controller Panel\\UserController --resource
 
 php artisan make:request StoreUpdateUserFormRequest
 
+php artisan make:controller Panel\\ReserveController
+
 ```
 
 

@@ -28,6 +28,8 @@ $this->namespace('Panel')
     $this->any('users/search', 'UserController@search')->name('users.search');
     $this->resource('users', 'UserController');
 
+    $this->resource('reserves', 'ReserveController')->except(['show', 'destroy']);
+
     $this->get('/', 'PanelController@index')->name('panel');
 
 });
