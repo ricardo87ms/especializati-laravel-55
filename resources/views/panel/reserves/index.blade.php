@@ -53,7 +53,7 @@
             <tr>
                 <td>{{ $reserve->id }}</td>
                 <td>{{ $reserve->user->name }}</td>
-                <td> {{ $reserve->flight->id }} </td>
+                <td> {{ $reserve->flight->id }} ({{ formatDateAndTime($reserve->flight->date) }}) </td>
                 {{-- <td> {{ $reserve->flight->orgin->name }} </td> --}}
                 <td>{{$reserve->status($reserve->status)}}</td>
                 <td>
