@@ -8,8 +8,8 @@ use App\Models\Flight;
 
 class Reserve extends Model
 {
-    
-    
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -18,5 +18,20 @@ class Reserve extends Model
     public function flight()
     {
         return $this->belongsTo(Flight::class);
+    }
+
+    public function status($op = null)
+    {
+        $statusAvailable = [
+            'reserved' => 'Reservado',
+            'canceled' => 'Cancelado',
+            'paid' => 'Pago',
+            'concluded' => 'Concluído',
+        ];
+
+        if ($op)
+            return $statusAvailable[$op];
+
+        return $statusAvailable;
     }
 }
