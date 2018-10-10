@@ -8,7 +8,7 @@ use App\Models\Flight;
 
 class Reserve extends Model
 {
-
+    protected $fillable = ['user_id', 'flight_id', 'date_reserved', 'status'];
 
     public function user()
     {

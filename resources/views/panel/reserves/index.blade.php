@@ -51,13 +51,13 @@
 
         @forelse ($reserves as $reserve)
             <tr>
-                <td>{{ $plane->id }}</td>
-                <td>{{ $plane->user->name }}</td>
-                <td> {{ $plane->flight->id }} </td>
-                {{-- <td> {{ $plane->flight->orgin->name }} </td> --}}
-                <td>{{$plane->status}}</td>
+                <td>{{ $reserve->id }}</td>
+                <td>{{ $reserve->user->name }}</td>
+                <td> {{ $reserve->flight->id }} </td>
+                {{-- <td> {{ $reserve->flight->orgin->name }} </td> --}}
+                <td>{{$reserve->status($reserve->status)}}</td>
                 <td>
-                    <a href="{{ route('reserves.edit', $plane->id) }}" class="edit">Edit</a>
+                    <a href="{{ route('reserves.edit', $reserve->id) }}" class="edit">Edit</a>
                 </td>
             </tr>
         @empty
