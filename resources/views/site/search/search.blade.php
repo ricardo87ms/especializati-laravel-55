@@ -25,7 +25,7 @@
                     <span>Saída: <strong>{{ formatDateAndTime($flight->hour_output, 'H:i') }}</strong></span>
                     <span>Chegada: <strong>{{ formatDateAndTime($flight->arrival_time, 'H:i') }}</strong></span>
                     <span>Paradas: <strong>{{ $flight->qty_stops }}</strong></span>
-                    {{-- <a href="{{ route('details.flight', $flight->id) }}">Detalhes</a> --}}
+                    <a href="{{ route('details.flight', $flight->id) }}">Detalhes</a>
 
                 </article><!--result-search-->
             @empty
