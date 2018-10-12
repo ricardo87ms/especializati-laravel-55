@@ -69,6 +69,8 @@ php artisan make:controller Panel\\ReserveController
 
 php artisan make:request StoreReserveFormRequest
 
+php artisan make:rule CheckAvailableFlight
+
 ```
 
 

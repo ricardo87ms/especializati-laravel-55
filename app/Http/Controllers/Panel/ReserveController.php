@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Reserve;
 use App\User;
 use App\Models\Flight;
+use App\Http\Requests\StoreReserveFormRequest;
 
 class ReserveController extends Controller
 {
@@ -55,7 +56,7 @@ class ReserveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreReserveFormRequest $request)
     {
         if ($this->reserve->create($request->all())){
             return redirect()

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Rules\CheckAvailableFlight;
 
 class StoreReserveFormRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StoreReserveFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,17 @@ class StoreReserveFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id'       => 'required|exists:users,id',
+            'flight_id'     => [
+                'required',
+                'exists:flights,id',
+                new CheckAvailableFlight,
+            ],
+            'date_reserved' => 'required|date',
+            'status'        => [
+                'required',
+                Rule::in(['reserved', 'canceled', 'paid', 'concluded'])
+            ],
         ];
     }
 }

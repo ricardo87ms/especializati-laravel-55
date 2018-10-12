@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Airport;
+use App\Models\Plane;
+use App\Models\Reserve;
 use Carbon\Carbon;
 
 class Flight extends Model
@@ -58,6 +60,16 @@ class Flight extends Model
         $data = $request->all();
         $data['image'] = $nameFile;
         return $this->update($data);
+    }
+
+    public function plane()
+    {
+        return $this->belongsTo(Plane::class);
+    }
+
+    public function reserves()
+    {
+        return $this->hasMany(Reserve::class)->where('reserves.status', '<>', 'canceled');
     }
 
     public function origin()
