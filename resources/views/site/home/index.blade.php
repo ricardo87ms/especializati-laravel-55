@@ -11,8 +11,8 @@
         {!! Form::text('origin', null, ['class' => 'form-control', 'list' => 'origin', 'placeholder' => 'Cidade Origem', 'required'])
         !!}
         <datalist id="origin">
-                @forelse($cities as $city)
-                    <option value="{{ $city->name }}">
+                @forelse($airports as $airport)
+                    <option value="{{ $airport->city->id }} - {{ $airport->city->name }} / {{ $airport->name }}">
                 @empty
                 @endforelse
             </datalist>
@@ -21,8 +21,8 @@
         {!! Form::text('destination', null, ['class' => 'form-control', 'list' => 'destination', 'placeholder' => 'Cidade Destino',
         'required']) !!}
         <datalist id="destination">
-                @forelse($cities as $city)
-                    <option value="{{ $city->name }}">
+                @forelse($airports as $airport)
+                    <option value="{{ $airport->city->id }} - {{ $airport->city->name }} / {{ $airport->name }}">
                 @empty
                 @endforelse
             </datalist>
