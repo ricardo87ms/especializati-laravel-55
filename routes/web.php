@@ -38,6 +38,9 @@ $this->namespace('Panel')
 
 
 $this->get('/promocoes', 'Site\SiteController@promotions')->name('promotions');
+
+$this->post('pesquisar', 'Site\SiteController@search')->name('search.flights.site');
+
 $this->get('/', 'Site\SiteController@index');
 
 
