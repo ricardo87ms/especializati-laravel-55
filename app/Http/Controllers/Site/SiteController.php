@@ -34,8 +34,14 @@ class SiteController extends Controller
         $origin = getInfoAirport($request->origin);
         $destination = getInfoAirport($request->destination);
 
-        $flights = $flight->searchFlights($origin['id_city'], $destination['id_city'], $request->date);
+        $flights = $flight->searchFlights($origin['id_airport'], $destination['id_airport'], $request->date);
 
-        return view('site.results.search', compact('title', 'flights'));
+        return view('site.search.search', [
+            'title' => $title,
+            'flights' => $flights,
+            'origin' => $origin['name_city'],
+            'destination' => $destination['name_city'],
+            'date' => formatDateAndTime($request->date)
+        ]);
     }
 }
