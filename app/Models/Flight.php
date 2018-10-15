@@ -120,4 +120,12 @@ class Flight extends Model
                     ->where('flights.date', $date)
                     ->get();
     }
+
+    public function promotions()
+    {
+        return $this->where('is_promotion', true)
+                    ->where('date', '>=', date('Y-m-d'))
+                    ->with(['origin.city', 'destination.city'])
+                    ->get();
+    }
 }
