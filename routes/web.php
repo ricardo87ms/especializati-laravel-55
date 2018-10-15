@@ -37,9 +37,9 @@ $this->namespace('Panel')
 
 
 $this->group(['middleware' => 'auth'], function(){
+    $this->get('minhas-compras', 'Site\SiteController@myPurchases')->name('my.purchases');
     $this->get('detalhes-voo/{id}', 'Site\SiteController@detailsFlight')->name('details.flight');
     $this->post('reservar', 'Site\SiteController@reserveFlight')->name('reserve.flight');
-    $this->get('minhas-compras', 'Site\SiteController@myPurchases')->name('purchases');
 });
 
 $this->post('pesquisar', 'Site\SiteController@search')->name('search.flights.site');

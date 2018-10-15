@@ -9,6 +9,8 @@ use App\Models\Flight;
 use App\Models\Airport;
 use App\Http\Requests\StoreReserveFormRequest;
 use App\Models\Reserve;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -63,7 +65,7 @@ class SiteController extends Controller
     {
         if($reserve->newReserve($request->flight_id)){
             return redirect()
-                        ->route('purchases')
+                        ->route('my.purchases')
                         ->with('success', 'Reservado com sucesso!');
         } else {
             return redirect()
@@ -73,8 +75,12 @@ class SiteController extends Controller
 
     }
 
-    public function myPurchases()
+    public function myPurchases(User $user)
     {
-        return 'teste';
+        $title = 'Minhas Compras';
+
+        $purchases = Auth::user()->reserves()->orderBy('date_reserved')->get();
+
+        return view('site.users.purchases', compact('title', 'purchases'));
     }
 }
