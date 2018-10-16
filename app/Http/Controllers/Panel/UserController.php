@@ -161,8 +161,20 @@ class UserController extends Controller
         return view('site.users.profile', compact('title'));
     }
 
-    public function updateProfile()
+    public function updateProfile(Request $request)
     {
-        return 'teste';
+        $user = auth()->user();
+        $user->name = $request->name;
+        if($user->password){
+            $user->password = bcrypt($request->password);
+        } 
+        if($user->save())
+            return redirect()
+                ->route('my.profile')
+                ->with('success', 'Alterado com sucesso!');
+        else
+            return redirect()
+                ->back()
+                ->with('error', 'Falha ao alterar!');
     }
 }
