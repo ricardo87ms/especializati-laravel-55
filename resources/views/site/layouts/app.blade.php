@@ -56,7 +56,7 @@
                         <div class="dropdown">
                             <a href="#" class="dropdown-toggle user-auth" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @if (auth()->user()->image)
-                                    <img src="{{ url('assets/site/images/no-image.png') }}" alt="{{ auth()->user()->name }}" class="img-header-user">
+                                <img src="{{ url('storage/users/'.auth()->user()->image) }}" alt="{{ auth()->user()->name }}" class="img-header-user">
                                 @else
                                     <img src="{{ url('assets/site/images/no-image.png') }}" alt="{{ auth()->user()->name }}" class="img-header-user">
                                 @endif

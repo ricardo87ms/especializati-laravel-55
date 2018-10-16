@@ -168,6 +168,23 @@ class UserController extends Controller
         if($user->password){
             $user->password = bcrypt($request->password);
         } 
+
+        if($request->hasFile('image') && $request->file('image')->isValid() ){
+            if($user->image){
+                $nameFile = $user->image;
+            } else {
+                $nameFile = $user->name . '.' . $request->image->extension();
+            }
+
+            $user->image = $nameFile;
+
+            if(!$request->image->storeAs('users', $nameFile)){
+                return redirect()
+                            ->back()
+                            ->with('error', 'Falha ao fazer upload!');
+            }
+        }
+
         if($user->save())
             return redirect()
                 ->route('my.profile')

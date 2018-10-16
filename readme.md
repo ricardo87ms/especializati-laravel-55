@@ -8,8 +8,8 @@
 ### Andamento das Aulas
 
 **Feito**
-**Modulo**: 6
-**Aula**: 15
+**Modulo**: 10
+**Aula**: 13
 
 ---
 
