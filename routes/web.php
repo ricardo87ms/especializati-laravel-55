@@ -38,7 +38,10 @@ $this->namespace('Panel')
 
 $this->group(['middleware' => 'auth'], function(){
     $this->get('meu-perfil', 'Panel\UserController@myProfile')->name('my.profile');
+    $this->get('sair', 'Panel\UserController@logout')->name('logout.user');
     $this->post('atualizar-perfil', 'Panel\UserController@updateProfile')->name('update.profile');
+
+
     $this->get('detalhes-compra/{idReserve}', 'Site\SiteController@purchaseDetail')->name('purchase.detail');
     $this->get('minhas-compras', 'Site\SiteController@myPurchases')->name('my.purchases');
     $this->get('detalhes-voo/{id}', 'Site\SiteController@detailsFlight')->name('details.flight');
