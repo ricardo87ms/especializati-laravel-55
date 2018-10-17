@@ -94,4 +94,7 @@ Foram incluídas as linhas abaixo na configuração do MySQL
                 'NO_ENGINE_SUBSTITUTION',
             ],
 
+Baixar traduções do Laravel:
+https://github.com/caouecs/Laravel-lang
+
 ```
