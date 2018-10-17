@@ -3,6 +3,7 @@
 
 $this->namespace('Panel')
      ->prefix('panel')
+     ->middleware(['auth', 'admin'])
      ->group(function(){
     
     $this->any('brands/search', 'BrandController@search')->name('brands.search');

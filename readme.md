@@ -9,7 +9,7 @@
 
 **Feito**
 **Modulo**: 10
-**Aula**: 15
+**Aula**: 16
 
 ---
 
@@ -72,6 +72,8 @@ php artisan make:request StoreReserveFormRequest
 php artisan make:rule CheckAvailableFlight
 
 php artisan make:request UpdateProfileUserFormRequest
+
+php artisan make:middleware CheckIfIsAdmin
 
 ```
 
