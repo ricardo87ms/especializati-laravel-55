@@ -1,6 +1,6 @@
 ## DADOS DO PROJETO
 
-**Curso:** Curso de Laravel 5.5 - Agência de Aviões 
+**Curso:** Curso de Laravel 5.5 - Agência de Aviões
 
 **Instituição:** Especializa TI
 
@@ -8,8 +8,8 @@
 ### Andamento das Aulas
 
 **Feito**
-**Modulo**: 10
-**Aula**: 16
+**Módulo**: Encerrado
+**Aula**: Encerrado
 
 ---
 
@@ -81,7 +81,7 @@ php artisan make:middleware CheckIfIsAdmin
 ## Anotações
 
 ```
-Foi incluído no provider AppServiceProvider a linha 
+Foi incluído no provider AppServiceProvider a linha
 Schema::defaultStringLength(191);
 
 Foram incluídas as linhas abaixo na configuração do MySQL
